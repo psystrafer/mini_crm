@@ -5,7 +5,7 @@ from sqlalchemy import Table, Column, ForeignKey, UniqueConstraint, Enum, Intege
 from .base import Base
 
 
-class Role(enum.Enum):
+class Role(str, enum.Enum):
     OWNER = "owner"
     ADMIN = "admin"
     MANAGER = "manager"
@@ -18,6 +18,6 @@ OrganizationMember = Table(
     Column("id", Integer, primary_key=True, autoincrement=True),
     Column("organization_id", ForeignKey("organization.id")),
     Column("user_id", ForeignKey("user.id")),
-    Column("role", Enum(Role)),
+    Column("role", Enum(Role), default=Role.OWNER),
     UniqueConstraint("organization_id", "user_id", name="uix_organization_member")
 )
