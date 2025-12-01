@@ -18,7 +18,7 @@ deals_router.add_api_route(
     endpoint=get_deals,
     methods=["GET"],
     response_model=List[DealResponse],
-    dependencies=Depends(check_read_access),
+    dependencies=[Depends(check_read_access)],
 )
 deals_router.add_api_route(
     path="/deals",
@@ -35,7 +35,7 @@ deals_router.add_api_route(
     endpoint=get_activities,
     methods=["GET"],
     response_model=List[ActivityResponse],
-    dependencies=Depends(check_read_access),
+    dependencies=[Depends(check_read_access)],
 )
 deals_router.add_api_route(
     path="/deals/{deal_id}/activities",

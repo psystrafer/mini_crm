@@ -12,7 +12,7 @@ tasks_router.add_api_route(
     endpoint=get_tasks,
     methods=["GET"],
     response_model=List[TaskResponse],
-    dependencies=Depends(check_read_access),
+    dependencies=[Depends(check_read_access)],
 )
 tasks_router.add_api_route(
     path="/tasks",

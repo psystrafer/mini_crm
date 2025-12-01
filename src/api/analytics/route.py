@@ -10,11 +10,11 @@ analytics_router.add_api_route(
     endpoint=get_summary,
     methods=["GET"],
     response_model=SummaryResponse,
-    dependencies=Depends(check_read_access),
+    dependencies=[Depends(check_read_access)],
 )
 analytics_router.add_api_route(
     path="/analytics/deals/funnel",
     endpoint=get_funnel,
     methods=["GET"],
-    dependencies=Depends(check_read_access),
+    dependencies=[Depends(check_read_access)],
 )
